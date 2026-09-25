@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+   <div class="container py-3">
+        <div class="row justify-content-center ">
+            <div class="col-sm-12 col-md-8 col-lg-6">
+                <div class="card login-card shadow-lg border-0">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="text-center mb-3">
+                             <i class="bi bi-film login-icon"></i>
+                            <h2 class="fw-bold mt-2">
+                                Welcome Back
+                            </h2>
+                            <p class="text-secondary">
+                                Login to continue to Movie Now
+                            </p>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary w-100 mt-2"><i class="bi bi-box-arrow-in-right"></i>Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p class="text-secondary mb-0">
+                                Don't have an account?
+                            </p>
+                            <a href="{% url 'register' %}" class="fw-bold">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>  
+{% endblock %}

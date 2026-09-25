@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit Movie
+{% endblock %}
+{% block content %}
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-7">
+                <div class="card add-movie-card shadow-lg border-0">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-pencil-square add-movie-icon"></i>
+                            <h2 class="fw-bold mt-3">
+                                Edit Movie
+                            </h2>
+                            <p class="text-secondary">
+                                Update the details of {{ movie.title }}
+                            </p>
+                        </div>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary w-100 mt-3">
+                                <i class="bi bi-check-circle"></i>Save Changes
+                            </button>
+                        </form>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'movie_detail' movie.id %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left"> Cancel</i>
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+    My Favorite
+{% endblock %}
+{% block content %}
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <i class="bi bi-heart-fill text-danger display-4"></i>
+            <h1 class="fw-bold mt-3">My Favorites</h1>
+            <p class="text-secondary">
+                Movies you have aaded to your favourite
+            </p>
+        </div>
+        <div class="row g-4">
+            {% for favourite in favourites %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card movie-card h-100 shadow-sm">
+                        {% if favourite.movie.poster %}
+                            <a href="{% url 'movie_detail' favourite.movie.id %}">
+                                <img src="{{ favourite.movie.poster.url }}" 
+                                    alt="{{ favourite.movie.title }}" class="card-img-top movie-poster">
+                            </a>
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ favourite.movie.title }}</h5>
+                            <p class="text-secondary mb-2">
+                                <i class="bi bi-tag"></i>
+                                {{ favourite.movie.category }}
+                            </p>
+                            <p class="text-secondary mb-2">
+                                {{ favourite.movie.description|truncatewords:15 }}
+                            </p>
+                            <div class="mt-auto">
+                                <p class="mb-2">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    {{ favourite.movie.ratings }}
+                                </p>
+                                <p class="text-secondary">
+                                    <i class="bi bi-calendar3"></i>
+                                    {{ favourite.movie.release_year }}
+                                </p>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <a href="{% url 'movie_detail' favourite.movie.id %}" class="btn btn-outline-primary">
+                                    <i class="bi bi-info-circle"></i>
+                                    View Details
+                                    </a>
+                                    <a href="{% url 'favourite_view' favourite.movie.id %}" class="btn btn-outline-danger">
+                                        <i class="bi bi-heart-fill"></i>
+                                        Remove From Favorites
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            {% empty %}
+                <div class="text-center py-5">
+                    
+                    <h3 class="mt-3">
+                        No Favorites Yet
+                    </h3>
+                    <p class="text-secondary">
+                        You haven't add any movie to the Favorites
+                    </p>
+                </div>
+            {% endfor %}
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ movie.title}} | Movie Now
+{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <div class="card movie-detail-card shadow-lg border-0">
+            <div class="row g-0">
+                <div class="col-md-4 p-3 mb-3">
+                    {% if movie.poster %}
+                        <img src="{{ movie.poster.url }}" alt="{{ movie.title}}" class="img-fluid movie-detail-poster">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body p-4 p-lg-5">
+                        <h1 class="display-5 fw-bold mb-3">
+                            {{ movie.title }}
+                        </h1>
+                        <div class="d-flex flex-wrap gap-3 mb-4 text-dark">
+                            <span class="badge  fs-6 text-dark">
+                                <i class="bi bi-tag"></i>
+                                {{ movie.category.name }}
+                            </span>
+                            <span class="badge fs-6 text-dark">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {{ movie.ratings }}
+                            </span>
+                            <span class="badge fs-6 text-dark">
+                                <i class="bi bi-calendar3"></i>
+                                {{ movie.release_year}}
+                            </span>
+
+                        </div>
+                        <h5 class="fw-bold">
+                            Description
+                        </h5>
+                        <p class="text-secondary mb-4">
+                            {{ movie.description }}
+                        </p>
+                        <h5 class="fw-bold">
+                            Actors
+                        </h5>
+                        <p class="text-secondary mb-4">
+                            {{ movie.actors}}
+                        </p>
+                            
+                        <div class="d-flex flex-wrap gap-2 ">
+                            {% if movie.trailer %}
+                                <a href="{{ movie.trailer }}" target="_blank" class="btn btn-danger"><i class="bi bi-play-circle"></i> Watch Trailer</a>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                                {% if is_favourite %}
+                                    <a href="{% url 'favourite_view' movie.id %}" class="btn btn-outline-danger">
+                                        <i class="bi bi-heart-fill"></i>
+                                        Remove from Favorites
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'favourite_view' movie.id %}" class="btn btn-outline-danger">
+                                        <i class="bi bi-heart"></i>
+                                        Add to Favorites
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn btn-outline-danger">
+                                    <i class="bi bi-heart"></i>
+                                    Login to Add Favorites
+                                </a>
+                            {% endif %}
+                        </div>
+                        {% if user == movie.created_by %}
+                            <hr class="my-4">
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="{% url 'edit_movie' movie.id %}" class="btn btn-outline-primary">
+                                    <i class="bi bi-pencil"></i>
+                                    Edit Movie
+                                </a>
+
+                                <a href="{% url 'delete_movie' movie.id %}" class="btn btn-danger">
+                                    Delete Movie
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="card comments-card shadow-sm border-0 mt-5">
+            <div class="card-body p-4 p-lg-5 justify-content-center">
+
+                <h2 class="fw-bold mb-4 text-center">
+                    <i class="bi bi-chat-left-text"></i>
+                    Comments
+                </h2>
+
+                {% if user.is_authenticated %}
+                <div class="d-flex flex-column align-items-center">
+                    <form method="POST"
+                        action="{% url 'add_comment' movie.id %}"
+                        class="comment-form mb-4">
+
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send"></i>
+                            Add Comment
+                        </button>
+                    </form>
+                </div>
+                    
+
+                {% else %}
+
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        Please login to add comments.
+                        <a href="{% url 'login' %}">Login</a>
+                    </div>
+
+                {% endif %}
+
+
+                {% for comment in comments %}
+
+                    <div class="comment-box p-3 mb-3">
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <strong>
+                                <i class="bi bi-person-circle"></i>
+                                {{ comment.user.username }}
+                            </strong>
+
+                            <small class="text-secondary">
+                                {{ comment.created_at }}
+                            </small>
+
+                        </div>
+
+                        <p class="mt-2 mb-0">
+                            {{ comment.text }}
+                        </p>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="no-comments text-center py-4">
+
+                        <i class="bi bi-chat display-4"></i>
+
+                        <p class="text-secondary mt-2 mb-0">
+                            No comments yet.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+    
+{% endblock %}

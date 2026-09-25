@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-11 col-md-7 col-lg-5">
+                <div class="card register-card shadow-lg border-0">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-person-plus register-icon"></i>
+                            <h2 class="fw-bold">
+                                Create Account
+                            </h2>
+                            <p class="text-secondary">
+                                Join Movie Now and discover great movies
+                            </p>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary w-100 mt-2">
+                                <i class="bi bi-person-plus"></i> Register
+                            </button>
+                        </form>
+                        <div class="text-center mt-4">
+                            <p class="text-secondary mt-0">
+                                Already have an account?                              
+                            </p>
+                            <a href="{% url 'login' %}" class="fw-bold">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}

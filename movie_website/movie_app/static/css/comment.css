@@ -1,0 +1,98 @@
+/* Comments section */
+
+.comments-card {
+    background-color: #f5f3ff;
+    border: 1px solid #ddd6fe !important;
+    border-radius: 18px;
+}
+
+.comments-card h2 {
+    color: #1e1b4b;
+}
+
+
+/* Comment form */
+
+.comment-form {
+    max-width: 700px;
+}
+
+.comment-form p {
+    margin-bottom: 15px;
+}
+
+.comment-form label {
+    display: block;
+    font-weight: 600;
+    color: #1e1b4b;
+    margin-bottom: 6px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px 14px;
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+    background-color: #ffffff;
+    resize: vertical;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.15);
+}
+
+.comment-form .btn {
+    border-radius: 8px;
+    padding: 9px 16px;
+}
+
+
+/* Individual comment */
+
+.comment-box {
+    background-color: #ffffff;
+    border: 1px solid #ddd6fe;
+    border-radius: 12px;
+}
+
+.comment-box strong {
+    color: #1e1b4b;
+}
+
+.comment-box p {
+    color: #495057;
+    line-height: 1.6;
+}
+
+
+/* No comments */
+
+.no-comments {
+    color: #6c757d;
+}
+
+.no-comments i {
+    font-size: 4rem;
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+    .comments-card .card-body {
+        padding: 20px !important;
+    }
+
+    .comment-form {
+        max-width: 100%;
+    }
+
+    .comment-form textarea {
+        min-height: 110px;
+    }
+
+}

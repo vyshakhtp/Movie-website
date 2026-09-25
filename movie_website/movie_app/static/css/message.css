@@ -1,0 +1,39 @@
+.custom-message {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    border: 1px solid #a7f3d0;
+    border-radius: 14px;
+    background-color: #ecfdf5;
+    color: #065f46;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 6px 20px rgba(6, 95, 70, 0.08);
+}
+
+.message-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.message-icon {
+    font-size: 2rem;
+    color: #198754;
+}
+
+.custom-message h5 {
+    color: #065f46;
+    font-weight: 700;
+}
+
+.custom-message p {
+    color: #047857;
+}
+
+.custom-message .btn-close {
+    margin-left: 20px;
+}

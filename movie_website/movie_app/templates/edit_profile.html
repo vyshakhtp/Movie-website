@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit Profile
+{% endblock %}
+{% block content %}
+    <div class="container py-5">
+        <div class="row g-0 justify-content-center">
+            <div class="col-12 col-md-8 col-lg-7">
+                <div class="card edit-profile-card shadow-lg border-0">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-person-gear profile-icon"></i>
+                            <h2 class="fw-bold mt-3">Edit Profile</h2>
+                            <p class="text-secondary">
+                                Update your account information
+                            </p>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary w-100 mt-3">
+                                <i class="bi bi-check-circle"></i>
+                                Save Changes
+                            </button>
+                        </form>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'profile_view' %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left"></i>
+                                Back to Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

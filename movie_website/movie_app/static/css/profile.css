@@ -1,0 +1,133 @@
+.add-movie-card,
+.movie-card,
+.login-card,
+.register-card {
+    background-color: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(30, 27, 75, 0.08);
+}
+
+.movie-card:hover{
+    background-color: #dcd6f9;
+}
+
+h1,h2,h3,h4,h5 {
+    color: #1e1b4b;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.profile-card,
+.edit-profile-card {
+    background-color: #f5f3ff;
+    border-radius: 18px;
+}
+
+.profile-info {
+    background-color: #faf7f0;
+    border: 1px solid #e5ded0;
+}
+
+.profile-card h2,
+.edit-profile-card h2 {
+    color: #292524;
+}
+
+/* profile */
+
+.profile-card {
+    border-radius: 15px;
+}
+
+.profile-icon {
+    font-size: 6rem;
+}
+
+.profile-info {
+    border: 1px solid #e9ecef;
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.profile-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.profile-item:last-child {
+    border-bottom: none;
+}
+
+.profile-item .label {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    font-weight: 600;
+}
+
+.profile-item .label i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.profile-item .value {
+    margin-left: auto;
+    color: #495057;
+    font-weight: 500;
+    text-align: right;
+    word-break: break-word;
+}
+
+.profile-item i {
+    margin-right: 8px;
+}
+
+.profile-item span {
+    color: #6c757d;
+    word-break: break-word;
+}
+
+.profile-card .btn {
+    border-radius: 8px;
+}
+
+/* edit profile */
+
+.edit-profile-card {
+    border-radius: 15px;
+}
+
+.edit-profile-card form p {
+    margin-bottom: 1rem;
+}
+
+.edit-profile-card form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.edit-profile-card form input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+
+.edit-profile-card form input:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.edit-profile-card .btn {
+    border-radius: 8px;
+    padding: 10px;
+}
